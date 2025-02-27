@@ -182,7 +182,7 @@ export const logout = async (req , res) => {
         httpOnly: true, // Prevents client-side JS access
         secure: true,   // Ensures cookie is sent only over HTTPS (enable in production)
         sameSite: "None", // Helps prevent CSRF attacks
-        expires: new Date(Date.now()), // 1 hour from now
+        expires: new Date(Date.now()), // 0 hour from now
       })
     
      return res.status(200).json({ message: "Logged out successfully" });

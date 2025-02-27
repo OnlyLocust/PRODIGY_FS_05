@@ -21,15 +21,17 @@ dotenv.config()
 // }))
 
 
-const allowedOrigins = [
-    "https://postiy.netlify.app",
-    "http://localhost:5173", 
-  ];
+// const allowedOrigins = [
+//     "https://postiy.netlify.app",
+//     "http://localhost:5173", 
+//   ];
   
   app.use(
     cors({
-      origin: allowedOrigins,
+      origin: 'https://postiy.netlify.app',
       credentials: true, // If using cookies or authentication headers
+      methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+      allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
     })
   );
 
