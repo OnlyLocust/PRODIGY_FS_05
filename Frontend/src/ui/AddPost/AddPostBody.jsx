@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../../../store/postSlice";
+import { changeOpenUploadPost } from "../../../store/authSlice";
 
 const AddPostBody = () => {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ const AddPostBody = () => {
       );
       toast.dismiss();
       toast.success("Upload successful!");
+      dispatch(changeOpenUploadPost(false))
     } catch (error) {
       toast.dismiss();
       toast.error("Upload failed", error);
