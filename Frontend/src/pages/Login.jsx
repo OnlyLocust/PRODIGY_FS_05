@@ -49,17 +49,17 @@ const Login = () => {
 
   return (
     <div className="h-[100vh] border flex justify-center items-center bg-[#444444] text-white">
-      <div className="border flex flex-col p-8  rounded-lg w-[35%]  justify-center gap-2 bg-[#242424]">
-        <div className="text-4xl text-center m-1 font-bold ">
+      <div className="border flex flex-col p-2 sm:p-8  rounded-lg lg:w-[35%]  justify-center gap-2 bg-[#242424]">
+        <div className="text-3xl sm:text-4xl text-center m-1 font-bold ">
           {isLogin ? "Log - In" : "Sign - Up"}
         </div>
         <hr />
-        <form method="post" className="p-1 flex flex-col text-xl">
+        <form method="post" className="p-4 sm:p-1 flex flex-col text-md sm:text-xl">
           <div className="my-1 font-semibold">Enter username : </div>
           <input
             type="text"
             name="username"
-            className="my-1 w-full border p-2 "
+            className="my-1 w-full border p-1 sm:p-2 "
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -68,7 +68,7 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            className="my-2 w-full border p-2  font-semibold"
+            className="my-2 w-full border  p-1 sm:p-2  font-semibold"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
