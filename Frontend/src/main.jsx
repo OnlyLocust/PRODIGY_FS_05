@@ -14,7 +14,7 @@ cors({
 
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
-    <BrowserRouter  basename="/home">
+    <BrowserRouter  basename="/">
     <Provider store={store}>
     <App />
     </Provider>
