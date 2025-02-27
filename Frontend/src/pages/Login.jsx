@@ -38,7 +38,7 @@ const Login = () => {
         dispatch(setLoginInfo(true));
       }
 
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       setUsername("");
       setPassword("");

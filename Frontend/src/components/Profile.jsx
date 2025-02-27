@@ -23,7 +23,7 @@ const Profile = () => {
       // alert(res.data.message)
       toast.success(res.data.message);
       dispatch(setLoginInfo(false));
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

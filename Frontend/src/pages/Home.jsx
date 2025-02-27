@@ -30,7 +30,7 @@ const Home = () => {
         );
         dispatch(setUser(res.data.user));
       } catch (error) {
-        navigate("/login");
+        navigate("/");
       }
     };
 
