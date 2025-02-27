@@ -5,38 +5,33 @@ import axios from "axios";
 import { setPosts } from "../../../store/postSlice";
 
 const Posts = () => {
-  
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const res = await axios.get('http://localhost:9090/api/post/get/all' , {withCredentials:true})
-        const posts = res.data.posts    
-        dispatch(setPosts(posts))    
+        const res = await axios.get(
+          "https://posty-0rlh.onrender.com/api/post/get/all",
+          { withCredentials: true }
+        );
+        const posts = res.data.posts;
+        dispatch(setPosts(posts));
         // console.log(posts);
-        
       } catch (error) {
         console.log(error);
-        
       }
-    }
-    
-    getPosts()
-    
-  }, [])
-  const posts = useSelector((store) => store.posts.posts)
+    };
+
+    getPosts();
+  }, []);
+  const posts = useSelector((store) => store.posts.posts);
 
   return (
     <div className=" h-[90%] overflow-x-scroll hide-scrollbar ">
       {posts.map((post) => (
         <PostCard key={post._id} post={post} />
         // console.log(post._id)
-        
-        
       ))}
-      
     </div>
   );
 };

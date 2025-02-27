@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {  toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../../../store/postSlice";
 
-
 const AddPostBody = () => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // const showLoading = () => { const loadingShow = toast.loading("Post Uploading")}
 
-  const loading = useSelector((store) => store.posts.isLoading)
+  const loading = useSelector((store) => store.posts.isLoading);
 
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState("");
@@ -18,49 +16,48 @@ const AddPostBody = () => {
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    
+
     if (selectedFile) {
       setFile(selectedFile);
       setPreview(URL.createObjectURL(selectedFile)); // Generate preview URL
     }
   };
-  
-  
+
   const uploadPost = async (e) => {
-// if(loading) showLoading()
-    e.preventDefault()
-    toast.loading("Post Uploading")
+    // if(loading) showLoading()
+    e.preventDefault();
+    toast.loading("Post Uploading");
     if (!file) {
       alert("Please select a file!");
       return;
     }
-    
+
     const formData = new FormData();
     formData.append("desc", desc);
     formData.append("file", file);
-    
-    
-    dispatch(setLoading(true))
+
+    dispatch(setLoading(true));
     try {
-      const res = await axios.post("http://localhost:9090/api/post/upload", formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-        withCredentials:true,
-        
-      });
-      toast.dismiss()
+      const res = await axios.post(
+        "https://posty-0rlh.onrender.com/api/post/upload",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+          withCredentials: true,
+        }
+      );
+      toast.dismiss();
       toast.success("Upload successful!");
     } catch (error) {
-      toast.dismiss()
+      toast.dismiss();
       toast.error("Upload failed", error);
+    } finally {
+      setFile(null);
+      setPreview("");
+      setDesc("");
+      dispatch(setLoading(false));
     }
-    finally{
-      setFile(null)
-      setPreview("")
-      setDesc("")
-      dispatch(setLoading(false))
-      
-    }
-  }
+  };
 
   return (
     // <div>
@@ -113,9 +110,28 @@ const AddPostBody = () => {
 
         {file && <p className="text-sm text-gray-700">Uploaded: {file.name}</p>}
       </div>
-      <div className="m-auto w-[90%]  rounded-lg my-2 font-bold text-2xl">Description : </div>
-      <div className="flex flex-col justify-center items-center"><textarea name="decription"  rows="5" className="m-auto w-[90%] bg-gray-300 text-black rounded-lg my-4 font-semibold font-mono p-2" value={desc} onChange={(e) => setDesc(e.target.value)}></textarea></div>
-      <div className="flex justify-center m-4"><button className={`border text-2xl text-center w-[50%] py-2 rounded-lg hover:scale-95 hover:text-green-500 cursor-pointer ${loading && 'cursor-not-allowed'}`} onClick={uploadPost}>Upload Post</button></div>
+      <div className="m-auto w-[90%]  rounded-lg my-2 font-bold text-2xl">
+        Description :{" "}
+      </div>
+      <div className="flex flex-col justify-center items-center">
+        <textarea
+          name="decription"
+          rows="5"
+          className="m-auto w-[90%] bg-gray-300 text-black rounded-lg my-4 font-semibold font-mono p-2"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+        ></textarea>
+      </div>
+      <div className="flex justify-center m-4">
+        <button
+          className={`border text-2xl text-center w-[50%] py-2 rounded-lg hover:scale-95 hover:text-green-500 cursor-pointer ${
+            loading && "cursor-not-allowed"
+          }`}
+          onClick={uploadPost}
+        >
+          Upload Post
+        </button>
+      </div>
     </form>
     // </div>
   );
