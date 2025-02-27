@@ -14,12 +14,30 @@ import postRoute from './routes/post.routes.js'
 const app = express()
 dotenv.config()
 
-app.use(cors({
-    // origin:'https://postiy.netlify.app',
-    origin:'https://postiy.netlify.app',
-    credentials:true
-}))
+// app.use(cors({
+//     // origin:'https://postiy.netlify.app',
+//     origin:'https://postiy.netlify.app',
+//     credentials:true
+// }))
 
+
+const allowedOrigins = [
+    "https://postiy.netlify.app",
+    "http://localhost:5173", // Add this for development
+  ];
+  
+  app.use(
+    cors({
+      origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error("Not allowed by CORS"));
+        }
+      },
+      credentials: true, // If using cookies or authentication headers
+    })
+  );
 
 app.use(fileUpload({
     useTempFiles:true
