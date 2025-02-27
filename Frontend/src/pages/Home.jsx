@@ -64,7 +64,7 @@ const Home = () => {
         {commentBox && <Comments />}
       </div>
       {/* <div className='col-span-7 lg:col-span-3 bg-[#444444] h-screen '>{ openPost ? <AddPost/> : <Social/> } </div> */}
-      <div className="col-span-7 lg:col-span-3 bg-[#444444] h-screen ">
+      <div className="col-span-7 lg:col-span-3 bg-[#444444] h-[100vh] ">
         {isSmall ? (
           openPost ? (
             <AddPost />
