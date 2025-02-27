@@ -1,6 +1,6 @@
 import React from 'react'
 import { changeOpenProfile, changeOpenUploadPost } from '../../../store/authSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { MdRemoveCircleOutline } from "react-icons/md";
 import initialProfile from './../../../public/initial.jpg'
 
