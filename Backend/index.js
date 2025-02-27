@@ -15,6 +15,7 @@ const app = express()
 dotenv.config()
 
 app.use(cors({
+    // origin:'https://postiy.netlify.app',
     origin:'https://postiy.netlify.app',
     credentials:true
 }))
