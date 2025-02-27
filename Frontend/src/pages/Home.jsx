@@ -29,9 +29,11 @@ const Home = () => {
           { withCredentials: true }
         );
         dispatch(setUser(res.data.user));
+        return;
       } catch (error) {
         navigate("/");
       }
+      navigate('/')
     };
 
     auth();
