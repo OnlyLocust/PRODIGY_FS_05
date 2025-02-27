@@ -29,8 +29,8 @@ export const signup = async (req , res) => {
 
         res.cookie("token",token, {
             httpOnly: true, // Prevents client-side JS access
-            secure: false,   // Ensures cookie is sent only over HTTPS (enable in production)
-            sameSite: "none", // Helps prevent CSRF attacks
+            secure: true,   // Ensures cookie is sent only over HTTPS (enable in production)
+            sameSite: "None", // Helps prevent CSRF attacks
             expires: new Date(Date.now() + 60 * 60 * 1000), // 1 hour from now
           })
 
@@ -79,8 +79,8 @@ export const login = async (req , res) => {
 
         res.cookie("token",token, {
             httpOnly: true, // Prevents client-side JS access
-            secure: false,   // Ensures cookie is sent only over HTTPS (enable in production)
-            sameSite: "none", // Helps prevent CSRF attacks
+            secure: true,   // Ensures cookie is sent only over HTTPS (enable in production)
+            sameSite: "None", // Helps prevent CSRF attacks
             expires: new Date(Date.now() + 60 * 60 * 1000), // 1 hour from now
           })
 
@@ -155,8 +155,8 @@ export const updateProfile = async (req , res) => {
 
         res.cookie("token",token, {
             httpOnly: true, // Prevents client-side JS access
-            secure: false,   // Ensures cookie is sent only over HTTPS (enable in production)
-            sameSite: "none", // Helps prevent CSRF attacks
+            secure: true,   // Ensures cookie is sent only over HTTPS (enable in production)
+            sameSite: "None", // Helps prevent CSRF attacks
             expires: new Date(Date.now() + 60 * 60 * 1000), // 1 hour from now
           })
           res.status(200).json({
@@ -180,8 +180,8 @@ export const logout = async (req , res) => {
     
     res.cookie("token","", {
         httpOnly: true, // Prevents client-side JS access
-        secure: false,   // Ensures cookie is sent only over HTTPS (enable in production)
-        sameSite: "none", // Helps prevent CSRF attacks
+        secure: true,   // Ensures cookie is sent only over HTTPS (enable in production)
+        sameSite: "None", // Helps prevent CSRF attacks
         expires: new Date(Date.now()), // 1 hour from now
       })
     
