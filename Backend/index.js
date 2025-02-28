@@ -28,10 +28,11 @@ dotenv.config()
   
   app.use(
     cors({
-      origin: 'https://postiy.netlify.app',
+      // origin: 'https://postiy.netlify.app',
+      origin: '*',
       credentials: true, // If using cookies or authentication headers
-      methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-      allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+      methods: "GET,POST,PUT,DELETE",
+      allowedHeaders: "Content-Type,Authorization",
     })
   );
 
